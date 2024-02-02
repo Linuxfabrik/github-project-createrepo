@@ -20,7 +20,7 @@ git clone --recurse-submodules https://github.com/Linuxfabrik/github-project-cre
 
 Create your configuration. The default path is `/etc/github-project-createrepo.yml`. Have a look at the `/opt/github-project-createrepo/example.yml` file and the Synopsis below.
 
-Install `yum-utils` and `createrepo`.
+Install the `createrepo` package.
 
 Use a web server that points to the directory named `base_path` in the configuration file.
 
@@ -44,7 +44,7 @@ systemctl enable --now github-project-createrepo-update.timer
 An example configuration to create a repository for [mydumper](https://github.com/mydumper/mydumper):
 
 ```yaml
-base_path: '/var/www/html/github-project-createrepo'
+base_path: '/var/www/html/github-repos'
 
 github_repos:
   - github_user: 'mydumper'
