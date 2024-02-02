@@ -9,7 +9,7 @@ Runs on
 
 ## Installation
 
-Recommended: Use the [linuxfabrik.lfops.github_project_createrepo LFOps Ansible Role](todo). Alternatively, follow the manual steps below.
+Recommended: Use the [linuxfabrik.lfops.github_project_createrepo LFOps Ansible Role](https://github.com/Linuxfabrik/lfops/tree/main/roles/github_project_createrepo). Alternatively, follow the manual steps below.
 
 Clone this repo:
 
