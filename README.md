@@ -28,14 +28,14 @@ If using systemd, set up the timer and service to update your repositories at re
 
 ```bash
 cd /opt/github-project-createrepo
-cp -v systemd/github-project-createrepo-update.service /etc/systemd/system/github-project-createrepo-update.service
-cp -v systemd/github-project-createrepo-update.timer /etc/systemd/system/github-project-createrepo-update.timer
+cp -v systemd/github-project-createrepo.service /etc/systemd/system/github-project-createrepo.service
+cp -v systemd/github-project-createrepo.timer /etc/systemd/system/github-project-createrepo.timer
 
 # adjust the OnCalendar option
-$EDITOR /etc/systemd/system/github-project-createrepo-update.timer
+$EDITOR /etc/systemd/system/github-project-createrepo.timer
 
 systemctl daemon-reload
-systemctl enable --now github-project-createrepo-update.timer
+systemctl enable --now github-project-createrepo.timer
 ```
 
 
