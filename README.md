@@ -27,6 +27,8 @@ Use a web server that points to the directory named `base_path` in the configura
 If using systemd, set up the timer and service to update your repositories at regular intervals:
 
 ```bash
+useradd --system --home-dir /opt/github-project-createrepo --shell /bin/false --groups apache github-project-createrepo
+
 cd /opt/github-project-createrepo
 cp -v systemd/github-project-createrepo.service /etc/systemd/system/github-project-createrepo.service
 cp -v systemd/github-project-createrepo.timer /etc/systemd/system/github-project-createrepo.timer
