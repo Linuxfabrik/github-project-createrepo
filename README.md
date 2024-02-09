@@ -27,6 +27,8 @@ Use a web server that points to the directory named `base_path` in the configura
 If using systemd, set up the timer and service to update your repositories at regular intervals:
 
 ```bash
+useradd --system --home-dir /opt/github-project-createrepo --shell /bin/false github-project-createrepo
+
 cd /opt/github-project-createrepo
 cp -v systemd/github-project-createrepo.service /etc/systemd/system/github-project-createrepo.service
 cp -v systemd/github-project-createrepo.timer /etc/systemd/system/github-project-createrepo.timer
@@ -36,6 +38,21 @@ $EDITOR /etc/systemd/system/github-project-createrepo.timer
 
 systemctl daemon-reload
 systemctl enable --now github-project-createrepo.timer
+
+# make sure the base path exists and can be access both by the webserver user and the github-project-createrepo user
+webserver_user=apache
+base_path='/var/www/html/github-repos'
+
+mkdir -p "$base_path"
+
+setfacl --recursive --modify user:$webserver_user:rwx "$base_path"
+setfacl --recursive --modify user:$webserver_user:rwx "$base_path"
+
+setfacl --recursive --modify group:$webserver_user:rx "$base_path"
+setfacl --recursive --modify group:$webserver_user:rx "$base_path"
+
+setfacl --recursive --modify user:github-project-createrepo:rwx "$base_path"
+setfacl --recursive --modify user:github-project-createrepo:rwx --default "$base_path"
 ```
 
 

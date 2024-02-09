@@ -6,6 +6,7 @@ User=root
 ExecStart=/opt/github-project-createrepo/github-project-createrepo
 # make sure we instantly see the output of the script in journald
 Environment=PYTHONUNBUFFERED=1
+User=github-project-createrepo
 
 [Install]
 WantedBy=basic.target

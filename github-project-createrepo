@@ -23,7 +23,7 @@ import lib.shell3
 import lib.url3
 
 __author__ = 'Linuxfabrik GmbH, Zurich/Switzerland'
-__version__ = '2024020201'
+__version__ = '2024020801'
 
 DESCRIPTION = 'A script to download RPM release assets from GitHub and create a RPM repository using `createrepo`.'
 DEFAULT_CONFIG = '/etc/github-project-createrepo.yml'
@@ -142,7 +142,6 @@ class GithubProjectCreaterepo:
 
     def run(self):
         self.update_github_repos()
-        self.chown_and_restorecon()
 
 
     def update_github_repos(self):
@@ -196,11 +195,6 @@ class GithubProjectCreaterepo:
             self.logger.info(f'{repo["github_user"]}/{repo["github_repo"]} to {target_path} end')
 
         self.logger.info('--- End of GitHub repos ---')
-
-
-    def chown_and_restorecon(self):
-        self.run_cmd(f'chown -R apache:apache {self.config["base_path"]}')
-        self.run_cmd(f'restorecon -Fr {self.config["base_path"]}')
 
 
 def main():
