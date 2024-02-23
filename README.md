@@ -1,4 +1,4 @@
-# Github Project Createrepo
+# GitHub Project Createrepo
 
 A script to download RPM release assets from GitHub and create a RPM repository using `createrepo`.
 
